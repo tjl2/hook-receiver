@@ -5,5 +5,5 @@ Just for testing GitHub service hooks
 
 ```
 bundle
-bundle exec hook-receiver.rb
+./start.sh
 ```
