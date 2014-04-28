@@ -7,7 +7,18 @@ get '/' do
 end
 
 post '/' do
-  payload = JSON.parse(params[:payload])
-  logger.info("I got this stuff: #{payload.inspect}")
-  "I got this stuff: #{payload.inspect}"
+  @payload = JSON.parse(params[:payload])
+  logger.info(parse_payload)
+  "I got this stuff: <br />#{parse_payload}"
+end
+
+private
+def parse_payload(payload=@payload)
+  payload.each do |key, value|
+    if value.is_array?
+      parse_payload(value)
+    else
+      puts "[#{key}] => #{value}"
+    end
+  end
 end
