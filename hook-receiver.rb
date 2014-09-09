@@ -7,7 +7,7 @@ get '/' do
   "POST something to me…"
 end
 
-post '/' do
-  payload = JSON.parse(params[:payload])
+post '/payload' do
+  payload = JSON.parse(request.body.read)
   logger.info(pp payload)
 end
